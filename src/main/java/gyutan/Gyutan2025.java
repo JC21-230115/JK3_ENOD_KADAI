@@ -13,38 +13,63 @@ import apiClass.GetClu;
 
 @WebServlet("/tan")
 public class Gyutan2025 extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+
+    private static final long serialVersionUID = 1L;
+    
     public Gyutan2025() {
-        super();
+    	super();
     }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    	response.getWriter().println("doGet method");}
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        // ★ 文字化け対策
+        request.setCharacterEncoding("UTF-8");
+
+        // ★ パラメータ取得
+        String param = request.getParameter("param");
+        if (Objects.isNull(param)) {
+            param = "";
+        }
+
+        // ★ CLU で分類
+        String detected = GetClu.getLanguageText(param);
+
+        // ★ 遷移先ページ
+        String nextPage;
+
+        switch (detected.toUpperCase()) {
+
+            case "ABOUT":
+                nextPage = "/about.jsp";
+                break;
+
+            case "MENU":
+                nextPage = "/menu.jsp";
+                break;
+
+            case "SHOP":
+                nextPage = "/shop.jsp";
+                break;
+
+            case "HISTORY":
+                nextPage = "/history.jsp";
+                break;
+
+            default:
+                request.setAttribute("msg", "キーワードを理解できませんでした");
+                nextPage = "/index.html";
+                break;
+        }
+
+        // ★ forward（これがないと遷移しない）
+        request.getRequestDispatcher(nextPage).forward(request, response);
+    
 
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().println("doGet method.");
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 受取ったパラメータの文字エンコードをUTF-8にする
-		request.setCharacterEncoding("UTF-8");
-
-		// パラメータを取得する
-		String param = request.getParameter("param");
-		// パラメータがnullなら、変数paramを""にする
-		if(Objects.isNull(param)) {
-			param="";
-		}
-
-		// paramを送ってCLUからデータを取得する
-		String detected = GetClu.getLanguageText(param);
-
-		
-		// 結果（スキーム）をコンソールとWebブラウザにひょうじ
-		System.out.println(detected);
-		response.getWriter().println(detected);
-		
-		
-	
-	}
-
+    }
 }

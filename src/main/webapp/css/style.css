@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/* モーダル背景 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+/* モーダル内容 */
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+}
+
+/* 閉じるボタン */
+.close {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ---------------------------------
+   全体（白背景 × 黒金）
+-----------------------------------*/
+body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+    background-color: #fdfdfd; /* ほぼ白。痛くない柔らかめの白 */
+    color: #333;               /* 標準の文字色は濃いグレーで可読性UP */
+}
+
+/* ---------------------------------
+   ヘッダー（黒 × 金）
+-----------------------------------*/
+header {
+    background: #000;
+    padding: 25px 0;
+    text-align: center;
+    border-bottom: 3px solid #c9a858; /* 金ライン */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+    color: #f5e7b2; /* 淡い金色 */
+    letter-spacing: 3px;
+}
+
+/* ---------------------------------
+   メインフォーム（白カード）
+-----------------------------------*/
+main {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #d7c27a; /* 金系の淡い枠線 */
+    box-shadow: 0 0 12px rgba(0,0,0,0.08);
+}
+
+/* 質問 */
+.question p {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+/* 入力欄 */
+.question input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #c9a858;
+    background: #fafafa;
+    color: #333;
+    border-radius: 6px;
+}
+
+/* ---------------------------------
+   送信ボタン（金のグラデ）
+-----------------------------------*/
+.submit button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #c9a858, #f0e3a0);
+    border: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.submit button:hover {
+    filter: brightness(0.92);
+}
+
+/* ---------------------------------
+   リンク一覧（黒金のボタン風）
+-----------------------------------*/
+h2 {
+    text-align: center;
+    margin-top: 50px;
+    color: #444;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+ul li {
+    margin: 12px 0;
+}
+
+ul a {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 10px;
+    display: block;
+    text-align: center;
+    border: 1px solid #c9a858;
+    border-radius: 6px;
+    color: #000;
+    background: #fff;
+    transition: 0.25s;
+}
+
+ul a:hover {
+    background: #f9f2d1;          /* 淡い金色背景 */
+    box-shadow: 0 0 10px rgba(200,170,80,0.3);
+}
